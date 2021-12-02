@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 import { Button } from "./components/Button";
@@ -8,7 +8,7 @@ export default function App() {
   const ethereum = window.ethereum;
 
   const [addr, setAddr] = useState("");
-  const [chainId, setChainId] = useState(parseInt(window.ethereum.chainId, 16));
+  const [chainId, setChainId] = useState(0);
 
   const handleGetAcount = async (e) => {
     const accounts = await window.ethereum.enable();
@@ -16,14 +16,17 @@ export default function App() {
     setAddr(account);
   };
 
-  if (ethereum) {
-    ethereum.on("accountsChanged", function (accounts) {
-      setAddr(accounts[0]);
-    });
-    ethereum.on("chainChanged", function (_chainId) {
-      setChainId(parseInt(_chainId, 16));
-    });
-  }
+  useEffect(() => {
+    if (ethereum) {
+      setChainId(parseInt(ethereum.chainId, 16));
+      ethereum.on("accountsChanged", function (accounts) {
+        setAddr(accounts[0]);
+      });
+      ethereum.on("chainChanged", function (_chainId) {
+        setChainId(parseInt(_chainId, 16));
+      });
+    }
+  }, []);
 
   return (
     <div className="App">
