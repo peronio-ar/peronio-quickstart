@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
+import logo from "../public/logo.png";
 
 import { Button } from "./components/Button";
 import { OnBoarding } from "./components/OnBoarding";
@@ -30,6 +31,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <img src={logo} className="logo" />
       <h1>Quick Start del Peronio</h1>
       <h3>Tenes Metamask instalado!</h3>
       <div>
