@@ -26,8 +26,8 @@ const claimedRef = collection(db, 'claimed');
 exports.hasAlreadyClaimed = async (address) => {
   console.info('Checking if already claimed...');
 
-  const q = query(claimedRef);
-  // const q = query(claimedRef, where("capital", "==", true));
+  // const q = query(claimedRef);
+  const q = query(claimedRef, where('capital', '==', true));
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
