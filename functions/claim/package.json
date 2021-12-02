@@ -1,0 +1,11 @@
+{
+  "name": "claim-function",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "author": "",
+  "dependencies": {
+    "firebase": "^9.5.0",
+    "web3": "^1.6.1"
+  }
+}

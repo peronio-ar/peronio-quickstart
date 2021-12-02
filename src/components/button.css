@@ -1,18 +1,19 @@
 :root {
-  --primary: #4628ff;
-  --warning: #ffd028;
+  --primary: #5bc4f1;
+  --warning: #ebc347;
   --danger: #eb3f27;
-  --success: #75fa83;
+  --success: #77a583;
   --white: #fdfdfd;
   --dark: #181717;
 }
 
 .btn {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 400;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .btn:hover {
