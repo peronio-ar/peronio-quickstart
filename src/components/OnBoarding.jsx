@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./Button";
+import { FaucetBlock } from "./FaucetBlock";
 
 const requiredNetwork = 137; //Polygon
 
@@ -8,7 +9,13 @@ export const OnBoarding = ({ addr, chainId }) => {
     <div>
       <p>Tu direccion: {addr}</p>
 
-      <p>{chainId === requiredNetwork ? <IsPolygon /> : <NotPolygon />}</p>
+      <p>
+        {chainId === requiredNetwork ? (
+          <FaucetBlock address={addr} />
+        ) : (
+          <NotPolygon />
+        )}
+      </p>
     </div>
   );
 };
@@ -18,14 +25,6 @@ const NotPolygon = () => {
     <div>
       <p>Necesitas utilizar la red de Polygon</p>
       <Button onClick={changeNetwork}>Cambiar a Red Polygon</Button>
-    </div>
-  );
-};
-
-const IsPolygon = () => {
-  return (
-    <div>
-      <p>Estas en Polygon!</p>
     </div>
   );
 };

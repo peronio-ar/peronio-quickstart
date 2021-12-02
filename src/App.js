@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Web3 from "web3";
 
 import { Button } from "./components/Button";
 import { OnBoarding } from "./components/OnBoarding";
@@ -11,7 +10,6 @@ export default function App() {
   const [addr, setAddr] = useState("");
   const [chainId, setChainId] = useState(parseInt(window.ethereum.chainId, 16));
 
-  //const web3 = new Web3(Web3.givenProvider);
   const handleGetAcount = async (e) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
@@ -29,14 +27,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>Testeo de Peronio</h1>
+      <h1>Quick Start del Peronio</h1>
       <h3>Tenes Metamask instalado!</h3>
       <div>
         <p>
