@@ -20,6 +20,7 @@ export default function App() {
   useEffect(() => {
     if (ethereum) {
       setChainId(parseInt(ethereum.chainId, 16));
+      console.dir(ethereum.chainId);
       ethereum.on('accountsChanged', function (accounts) {
         setAddr(accounts[0]);
       });
