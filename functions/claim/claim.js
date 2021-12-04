@@ -5,15 +5,16 @@ const { hasAlreadyClaimed, storeAddressAsClaimed } = require('./lib/firestore');
 exports.handler = async (event) => {
   try {
     const { address } = JSON.parse(event.body);
+    const ipAddress = event.headers['client-ip'];
+
     if (!isAddress(address)) {
       throw 'Not an address';
     }
-    if (hasAlreadyClaimed(address)) {
+    if (await hasAlreadyClaimed(address)) {
       throw 'Already claimed';
     }
-    storeAddressAsClaimed(address);
-    sendFunds(address);
-    console.log(body);
+    await storeAddressAsClaimed(address, ipAddress);
+    await sendFunds(address);
 
     return {
       statusCode: 200,

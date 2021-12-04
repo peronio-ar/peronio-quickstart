@@ -8,6 +8,6 @@ exports.isAddress = (address) => {
   return true;
 };
 
-exports.sendFunds = (address) => {
+exports.sendFunds = async (address) => {
   return '0x242434343tdferr343';
 };

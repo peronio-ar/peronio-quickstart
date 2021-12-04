@@ -5,6 +5,7 @@ const {
   query,
   where,
   getDocs,
+  addDoc,
 } = require('firebase/firestore');
 
 // Set Environments variables as Config
@@ -23,18 +24,10 @@ const claimedRef = collection(db, 'claimed');
  * @param {String} address Ethereum address
  * @returns
  */
-exports.hasAlreadyClaimed = async (address) => {
-  console.info('Checking if already claimed...');
-
-  // const q = query(claimedRef);
-  const q = query(claimedRef, where('capital', '==', true));
-
+exports.hasAlreadyClaimed = async (address, ipAddress) => {
+  const q = query(claimedRef, where('address', '==', address));
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
-  });
-  return false;
+  return querySnapshot.size > 0;
 };
 
 /**
@@ -42,7 +35,9 @@ exports.hasAlreadyClaimed = async (address) => {
  * @param {String} address Ethereum address
  * @returns
  */
-exports.storeAddressAsClaimed = (address) => {
-  // console.info('Store address');
-  return true;
+exports.storeAddressAsClaimed = async (address, ipAddress) => {
+  return await addDoc(claimedRef, {
+    address: address,
+    ipAddress: ipAddress,
+  });
 };
