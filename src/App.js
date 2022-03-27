@@ -74,9 +74,11 @@ export default function App() {
       )}
       <br />
       {!ethereum && (
-        <p style={{ color: "red" }}>
-          <h1>Testeo de Peornio</h1>
+        <p>
+          <h1>Seguí estos pasos</h1>
+          <p>Recomendamos hacerlo en una computadora</p>
           <h3>Primero bajate Metamask</h3>
+
           <div>
             <a target='blank' href='https://metamask.io/'>
               Descargar Metamask
