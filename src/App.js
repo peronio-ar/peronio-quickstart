@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import './styles.css';
-import logo from './static/logo.png';
+import React, { useEffect, useState } from "react";
+import "./styles.css";
+import logo from "./static/logo.png";
 
-import { Button } from './components/Button';
-import { OnBoarding } from './components/OnBoarding';
+import { Button } from "./components/Button";
+import { OnBoarding } from "./components/OnBoarding";
 
 export default function App() {
   const ethereum = window.ethereum;
 
-  const [addr, setAddr] = useState('');
+  const [addr, setAddr] = useState("");
   const [chainId, setChainId] = useState(0);
 
   const handleGetAcount = async (e) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
     setAddr(account);
+
+    setChainId(parseInt(ethereum.chainId, 16));
   };
 
   useEffect(() => {
     if (ethereum) {
+      console.info("ethereum");
+      console.dir(ethereum);
+
       setChainId(parseInt(ethereum.chainId, 16));
       console.dir(ethereum.chainId);
-      ethereum.on('accountsChanged', function (accounts) {
+
+      ethereum.on("accountsChanged", function (accounts) {
         setAddr(accounts[0]);
       });
-      ethereum.on('chainChanged', function (_chainId) {
+
+      ethereum.on("chainChanged", function (_chainId) {
         setChainId(parseInt(_chainId, 16));
       });
     }
@@ -33,7 +40,7 @@ export default function App() {
   return (
     <div className='App'>
       <img alt='Peronio Logo' src={logo} className='logo' />
-      <h1>Quick Start del Peronio</h1>
+      <h1>Como arrancar?</h1>
 
       {ethereum && (
         //<a href="https://metamask.online/" target="_blank">
@@ -47,7 +54,7 @@ export default function App() {
             {!addr ? (
               <p>Hacé click en Conectar a Metamask</p>
             ) : (
-              'Ya estas conectado!'
+              "Ya estas conectado!"
             )}
           </div>
 
@@ -67,7 +74,7 @@ export default function App() {
       )}
       <br />
       {!ethereum && (
-        <p style={{ color: 'red' }}>
+        <p style={{ color: "red" }}>
           <h1>Testeo de Peornio</h1>
           <h3>Primero bajate Metamask</h3>
           <div>

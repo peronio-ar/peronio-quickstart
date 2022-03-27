@@ -1,5 +1,5 @@
 :root {
-  --primary: #5bc4f1;
+  --primary: #fcf7f2;
   --warning: #ebc347;
   --danger: #eb3f27;
   --success: #77a583;
@@ -8,7 +8,7 @@
 }
 
 .btn {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   border-radius: 10px;
   cursor: pointer;
@@ -18,6 +18,10 @@
 
 .btn:hover {
   transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.7);
 }
 
 /* Button Colors and Styles */

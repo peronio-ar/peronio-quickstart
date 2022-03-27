@@ -1,7 +1,12 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  background: #00b7c2;
+  color: white;
+}
 
 .App {
-  font-family: 'Georgia', sans-serif;
+  font-family: "Roboto", sans-serif;
   text-align: center;
   margin-top: 20px;
 }

@@ -16,9 +16,9 @@ export const AddToken = ({ address, symbol, decimals, image, onAdded }) => {
             address: address, // The address that the token is at.
             symbol: symbol, // A ticker symbol or shorthand, up to 5 chars.
             decimals: decimals, // The number of decimals in the token
-            image: image // A string url of the token logo
-          }
-        }
+            image: image, // A string url of the token logo
+          },
+        },
       });
 
       if (wasAdded) {
@@ -35,15 +35,15 @@ export const AddToken = ({ address, symbol, decimals, image, onAdded }) => {
     <>
       {!addedToken ? (
         <Button
-          type="button"
-          buttonStyle="btn--primary--outline"
-          buttonSize="btn--large"
+          type='button'
+          buttonStyle='btn--primary--outline'
+          buttonSize='btn--large'
           onClick={handleAddToken}
         >
-          Agregar Token a Metamask
+          Agregar {symbol} a Metamask
         </Button>
       ) : (
-        <div>Token Agregado. Hacé click en Agregar Peronios.</div>
+        <div>Token ({symbol}) agregado a Metamask!</div>
       )}
     </>
   );

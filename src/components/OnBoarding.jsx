@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button } from './Button';
-import { FaucetBlock } from './FaucetBlock';
+import React from "react";
+import { Button } from "./Button";
+import { FaucetBlock } from "./FaucetBlock";
 
 const requiredNetwork = 137; //Polygon
 
@@ -13,7 +13,10 @@ export const OnBoarding = ({ addr, chainId }) => {
         {chainId === requiredNetwork ? (
           <FaucetBlock address={addr} />
         ) : (
-          <NotPolygon />
+          <>
+            <NotPolygon />
+            <p>Red actual: {chainId} </p>
+          </>
         )}
       </div>
     </div>
@@ -32,24 +35,24 @@ const NotPolygon = () => {
 const changeNetwork = async () => {
   if (window.ethereum) {
     try {
-      await window.ethereum.enable();
+      await window.ethereum.request({ method: "eth_requestAccounts" });
       await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
+        method: "wallet_addEthereumChain",
         params: [
           {
-            chainId: '0x89', // A 0x-prefixed hexadecimal string
-            chainName: 'Polygon',
+            chainId: "0x89", // A 0x-prefixed hexadecimal string
+            chainName: "Polygon",
             nativeCurrency: {
-              name: 'MATIC',
-              symbol: 'MATIC', // 2-6 characters long
+              name: "MATIC",
+              symbol: "MATIC", // 2-6 characters long
               decimals: 18,
             },
             rpcUrls: [
-              'https://polygon-mainnet.infura.io/v3/2343217699c44b45851935789f1f89e6',
+              "https://polygon-mainnet.infura.io/v3/2343217699c44b45851935789f1f89e6",
             ],
-            blockExplorerUrls: ['https://polygonscan.com'],
+            blockExplorerUrls: ["https://polygonscan.com"],
             iconUrls: [
-              'https://cryptologos.cc/logos/polygon-matic-logo.png?v=014',
+              "https://cryptologos.cc/logos/polygon-matic-logo.png?v=014",
             ],
           },
         ], // chainId must be in hexadecimal numbers
