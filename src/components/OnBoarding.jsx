@@ -27,7 +27,13 @@ const NotPolygon = () => {
   return (
     <div>
       <p>Necesitas utilizar la red de Polygon</p>
-      <Button onClick={changeNetwork}>Cambiar a Red Polygon</Button>
+      <Button
+        buttonStyle='btn--primary--outline'
+        buttonSize='btn--large'
+        onClick={changeNetwork}
+      >
+        Cambiar a Red Polygon
+      </Button>
     </div>
   );
 };
