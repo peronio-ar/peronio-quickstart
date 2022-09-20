@@ -32,8 +32,8 @@ export const FaucetBlock = ({ address }) => {
   return (
     <div>
       <AddToken
-        address={"0xc2768beF7a6BB57F0FfA169a9ED4017c09696FF1"}
-        symbol={"PE"}
+        address={"0x78a486306D15E7111cca541F2f1307a1cFCaF5C4"}
+        symbol={"P"}
         decimals={6}
         image="https://raw.githubusercontent.com/peronio-ar/branding/main/logo/v2/200.png"
       />
